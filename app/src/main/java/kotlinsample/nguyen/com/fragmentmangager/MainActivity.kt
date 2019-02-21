@@ -3,12 +3,24 @@ package kotlinsample.nguyen.com.fragmentmangager
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.content.Intent
+import android.util.Log
+import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : AppCompatActivity() {
+
+class MainActivity : AppCompatActivity(),Fragment1.SentData {
+    override fun getData(value: String) {
+        txt.setText(value)
+    }
+
     private val arrFragment=ArrayList<Fragment>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        val intent = intent
+        val data = intent.data
+//        Log.d("D<MMM",data.toString())
+
         initFragment()
     }
 
@@ -22,7 +34,7 @@ class MainActivity : AppCompatActivity() {
             transition.add(R.id.fragment,fragment)
         }
         transition.commit()
-        showFragment(0)
+        showFragment(1)
 
     }
 

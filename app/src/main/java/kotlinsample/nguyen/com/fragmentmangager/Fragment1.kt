@@ -16,6 +16,7 @@ class Fragment1 : Fragment() {
     private val mParam1: String? = null
     private val mParam2: String? = null
     private  val TAG = Fragment1::class.java.name
+    lateinit var sentData : SentData
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,6 +26,7 @@ class Fragment1 : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_fragment1, container, false)
+        sentData.getData(TAG)
         Log.d("onCreateView",TAG)
     }
 
@@ -82,6 +84,10 @@ class Fragment1 : Fragment() {
             fragment.arguments = args
             return fragment
         }
+    }
+
+    interface SentData{
+        fun getData(value:String)
     }
 
 
